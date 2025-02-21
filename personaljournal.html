@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Journal</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="personaljournal.js" defer></script>
+</head>
+<body>
+            <header style="background-color: #3a4b61; padding: 10px 0;">
+                <div class="container" style="display: flex; align-items: center; justify-content: space-between; color: white;">
+                    <a href="index.html" class="logo" style="color: white; text-decoration: none; font-size: 1.5rem;">Your Digital Mentor</a>
+                    <nav>
+                        <ul style="list-style: none; margin: 0; padding: 0; display: flex; gap: 20px;">
+                            <li><a href="index.html" style="color: white; text-decoration: none;">Home</a></li>
+                            <li><a href="goaltracker.html" style="color: white; text-decoration: none;">Goal tracker</a></li>
+                            <li><a href="habittracking.html" style="color: white; text-decoration: none;">Habit tracking</a></li>
+                            <li><a href="learningresources.html" style="color: white; text-decoration: none;">Learning resources</a></li>
+                            <li><a href="chatt.html" style="color: white; text-decoration: none;">Chat bot</a></li>
+                            <li><a href="progressdashboard.html" style="color: white; text-decoration: none;">Progress dashboard</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+
+    <section class="personal-journal">
+        <div class="container">
+            <h1>Personal Journal</h1>
+            <p>Log your daily reflections and track emotional growth alongside your goals.</p>
+
+            <form id="journal-form" onsubmit="addJournalEntry(event)">
+                <textarea id="journal-entry" placeholder="Write your reflection..." required></textarea>
+                <button type="submit" class="btn">Save Entry</button>
+            </form>
+
+            <h2>Your Journal Entries</h2>
+            <div id="journal-entries" class="entries-container">
+                <!-- Journal entries will appear here -->
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Your Digital Mentor. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

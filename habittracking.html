@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habit Tracking & Reminders</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="habittracking.js" defer></script>
+</head>
+<body>
+    <!-- Header Section -->
+    <header style="background-color: #3a4b61; padding: 10px 0;">
+        <div class="container" style="display: flex; align-items: center; justify-content: space-between; color: white;">
+            <a href="index.html" class="logo" style="color: white; text-decoration: none; font-size: 1.5rem;">Your Digital Mentor</a>
+            <nav>
+                <ul style="list-style: none; margin: 0; padding: 0; display: flex; gap: 20px;">
+                    <li><a href="index.html" style="color: white; text-decoration: none;">Home</a></li>
+                    <li><a href="goaltracker.html" style="color: white; text-decoration: none;">Goal tracking</a></li>
+                    <li><a href="learningresources.html" style="color: white; text-decoration: none;">Learning resources</a></li>
+                    <li><a href="chatt.html" style="color: white; text-decoration: none;">Chat bot</a></li>
+                    <li><a href="progressdashboard.html" style="color: white; text-decoration: none;">Progress dashboard</a></li>
+                    <li><a href="personaljournal.html" style="color: white; text-decoration: none;">Personal journal</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Habit Tracking Section -->
+    <section id="habit-tracker" class="habit-tracker">
+        <div class="container">
+            <h1>Habit Tracking & Reminders</h1>
+            <p>Track your daily habits and stay accountable with reminders!</p>
+
+            <!-- Add Habit Form -->
+            <div class="add-habit-form">
+                <h2>Add a New Habit</h2>
+                <form id="habitForm" onsubmit="addHabit(event)">
+                    <label for="habitName">Habit Name:</label>
+                    <input type="text" id="habitName" required>
+                    
+                    <label for="habitFrequency">Frequency:</label>
+                    <select id="habitFrequency" required>
+                        <option value="daily">Daily</option>
+                        <option value="weekly">Weekly</option>
+                        <option value="monthly">Monthly</option>
+                    </select>
+
+                    <label for="habitReminder">Set Reminder Time:</label>
+                    <input type="time" id="habitReminder" required>
+                    
+                    <button type="submit" class="btn">Add Habit</button>
+                </form>
+            </div>
+
+            <!-- Habit List Table -->
+            <div class="habit-list">
+                <h2>Your Habits</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Habit</th>
+                            <th>Frequency</th>
+                            <th>Reminder</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="habitTable">
+                        <!-- Habit rows will be dynamically added here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Your Digital Mentor. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

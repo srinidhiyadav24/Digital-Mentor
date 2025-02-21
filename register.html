@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Your Digital Mentor</title>
+    <link rel="stylesheet" href="lrstyles.css">
+    <script>
+        function handleRegistration(event) {
+            event.preventDefault(); // Prevent form from submitting traditionally
+            
+            // Get user details
+            const fullName = document.getElementById("fullname").value;
+
+            // Display success message
+            const messageContainer = document.getElementById("success-message");
+            messageContainer.innerHTML = `Registration Successful! Welcome, <strong>${fullName}</strong>. Redirecting to Goal Tracker...`;
+            messageContainer.style.display = "block";
+
+            // Redirect to goaltracker.html after 3 seconds
+            setTimeout(() => {
+                window.location.href = "gt.html";
+            }, 3000);
+        }
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">Your Digital Mentor</a>
+            <nav>
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Registration Section -->
+    <section class="register-section">
+        <div class="container">
+            <h2>Create Your Account</h2>
+            <p>Join us and start your journey to personal growth.</p>
+
+            <!-- Success Message Container -->
+            <div id="success-message" style="display: none; color: green; margin-bottom: 15px;"></div>
+
+            <form class="register-form" onsubmit="handleRegistration(event)">
+                <div class="form-group">
+                    <label for="fullname">Full Name:</label>
+                    <input type="text" id="fullname" name="fullname" required placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required placeholder="Create a password">
+                </div>
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password:</label>
+                    <input type="password" id="confirm-password" name="confirm-password" required placeholder="Confirm your password">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn">Register</button>
+                </div>
+                <p class="login-link">
+                    Already have an account? <a href="login.html">Login Here</a>
+                </p>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Your Digital Mentor. All rights reserved.</p>
+            <nav>
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>

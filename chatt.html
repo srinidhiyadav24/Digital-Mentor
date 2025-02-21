@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #3a4b61;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: #3a4b61;
+            padding: 10px 0;
+        }
+
+        header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+            padding: 0 20px;
+        }
+
+        header .container a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+        }
+
+        header .container ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        header .container ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .chat-container {
+            width: 90%;
+            max-width: 800px;
+            height: 80vh;
+            background: #3a4b61;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            margin: 20px auto;
+        }
+
+        .chat-header {
+            padding: 20px;
+            background: #4b7097;
+            color: whitesmoke;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .chat-header h1 {
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .message {
+            max-width: 70%;
+            padding: 12px 16px;
+            border-radius: 15px;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .user-message {
+            background: #007bff;
+            color: whitesmoke;
+            align-self: flex-end;
+            border-bottom-right-radius: 5px;
+        }
+
+        .bot-message {
+            background: #f0f2f5;
+            color: #1c1e21;
+            align-self: flex-start;
+            border-bottom-left-radius: 5px;
+        }
+
+        .chat-input {
+            padding: 20px;
+            background: #adbac8;
+            border-top: 1px solid #a2a5a9;
+            border-radius: 0 0 12px 12px;
+        }
+
+        .input-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        #user-input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #596470;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        #user-input:focus {
+            border-color: #007bff;
+        }
+
+        #send-button {
+            padding: 12px 24px;
+            background: #43668c;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: background 0.3s;
+        }
+
+        #send-button:hover {
+            background: #0056b3;
+        }
+
+        .typing-indicator {
+            display: none;
+            align-self: flex-start;
+            background: #f0f2f5;
+            padding: 12px 16px;
+            border-radius: 15px;
+            color: #666;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">Your Digital Mentor</a>
+            <nav>
+                <ul>
+                    <li><a href="index.html" style="color: white; text-decoration: none;">Home</a></li>
+                    <li><a href="habittracking.html">Habit tracking</a></li>
+                    <li><a href="learningresources.html">Learning resources</a></li>
+                    <li><a href="chatt.html">Chat bot</a></li>
+                    <li><a href="progressdashboard.html">Progress dashboard</a></li>
+                    <li><a href="personaljournal.html">Personal journal</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h1>Chatbot</h1>
+        </div>
+        <div class="chat-messages" id="chat-messages">
+            <div class="message bot-message">
+                Hello! I'm your AI assistant. How can I help you today?
+            </div>
+        </div>
+        <div class="typing-indicator" id="typing-indicator">
+            AI is typing...
+        </div>
+        <div class="chat-input">
+            <div class="input-container">
+                <input type="text" id="user-input" placeholder="Type your message...">
+                <button id="send-button">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class Chatbot {
+            constructor() {
+                this.messages = document.getElementById('chat-messages');
+                this.userInput = document.getElementById('user-input');
+                this.sendButton = document.getElementById('send-button');
+                this.typingIndicator = document.getElementById('typing-indicator');
+                
+                this.responses = {
+                    greeting: ['hello', 'hi', 'hey', 'greetings'],
+                    farewell: ['bye', 'goodbye', 'see you', 'cya'],
+                    thanks: ['thank', 'thanks', 'appreciate'],
+                    help: ['help', 'assist', 'support'],
+                    weather: ['weather', 'temperature', 'forecast'],
+                    time: ['time', 'clock', 'hour'],
+                    name: ['name', 'called', 'who are you'],
+                    how: ['how are you', 'how do you do', 'how\'s it going'],
+                    location: ['where', 'location', 'place', 'country', 'city'],
+                    age: ['age', 'old', 'created', 'birth'],
+                    purpose: ['purpose', 'why', 'what can you do', 'abilities', 'capable'],
+                    joke: ['joke', 'funny', 'humor', 'laugh'],
+                    math: ['calculate', 'sum', 'multiply', 'divide', 'subtract', '+', '-', '*', '/'],
+                    color: ['color', 'favourite color', 'best color'],
+                    food: ['food', 'eat', 'drink', 'cuisine'],
+                    music: ['music', 'song', 'singer', 'band'],
+                    movies: ['movie', 'film', 'cinema', 'watch'],
+                    sports: ['sport', 'game', 'play', 'athlete'],
+                    technology: ['technology', 'computer', 'programming', 'coding', 'software', 'hardware'],
+                    education: ['education', 'study', 'learn', 'school', 'college', 'university'],
+                    health: ['health', 'exercise', 'fitness', 'medical', 'doctor'],
+                    career: ['job', 'career', 'profession', 'work', 'employment']
+                };
+
+                this.init();
+            }
+
+            init() {
+                this.sendButton.addEventListener('click', () => this.handleUserInput());
+                this.userInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        this.handleUserInput();
+                    }
+                });
+            }
+
+            handleUserInput() {
+                const message = this.userInput.value.trim();
+                if (message === '') return;
+
+                this.addMessage(message, 'user');
+                this.userInput.value = '';
+                this.showTypingIndicator();
+
+                setTimeout(() => {
+                    this.generateResponse(message);
+                }, 1000);
+            }
+                addMessage(message, sender) {
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('message', `${sender}-message`);
+                messageDiv.textContent = message;
+                this.messages.appendChild(messageDiv);
+                this.messages.scrollTop = this.messages.scrollHeight;
+            }
+
+            showTypingIndicator() {
+                this.typingIndicator.style.display = 'block';
+                this.messages.scrollTop = this.messages.scrollHeight;
+            }
+
+            hideTypingIndicator() {
+                this.typingIndicator.style.display = 'none';
+            }
+
+            generateResponse(userMessage) {
+                const message = userMessage.toLowerCase();
+                let response = '';
+
+                // Extract numbers for math operations
+                const numbers = message.match(/\d+/g);
+                const hasOperator = /[+\-*/]/.test(message);
+
+                if (this.containsAny(message, this.responses.greeting)) {
+                    response = this.getRandomResponse([
+                        'Hello! I\'m here to help you with any questions you have!',
+                        'Hi there! I\'m excited to assist you today!',
+                        'Hey! I\'m your AI assistant, ready to help with anything!'
+                    ]);
+                } else if (this.containsAny(message, this.responses.math) && numbers && hasOperator) {
+                    try {
+                        const result = eval(message.replace(/[^0-9+\-*/().]/g, ''));
+                        response = `The result is ${result}`;
+                    } catch {
+                        response = 'I can help you with basic math calculations. Please format your question clearly (e.g., "what is 5 + 3?")';
+                    }
+                } else if (this.containsAny(message, this.responses.location)) {
+                    response = 'I exist in the digital world, ready to help users from anywhere on Earth! I don\'t have a physical location.';
+                } else if (this.containsAny(message, this.responses.age)) {
+                    response = 'I\'m an AI assistant, so I don\'t age like humans do. I\'m constantly learning and updating!';
+                } else if (this.containsAny(message, this.responses.purpose)) {
+                    response = 'I\'m designed to help you with various tasks including answering questions, calculations, providing information, and engaging in conversations. I can assist with topics ranging from technology to general knowledge!';
+                } else if (this.containsAny(message, this.responses.joke)) {
+                    response = this.getRandomResponse([
+                        'Why don\'t programmers like nature? It has too many bugs!',
+                        'Why did the JavaScript developer wear glasses? Because he couldn\'t C#!',
+                        'What do you call a computer that sings? A Dell-a-cappella!'
+                    ]);
+                } else if (this.containsAny(message, this.responses.technology)) {
+                    if (message.includes('programming')) {
+                        response = 'Programming is the process of creating computer software using programming languages. Popular languages include Python, JavaScript, Java, and C++. Each has its own strengths and use cases!';
+                    } else if (message.includes('computer')) {
+                        response = 'Computers are electronic devices that process data according to instructions. They\'ve revolutionized how we work, communicate, and live!';
+                    } else {
+                        response = 'Technology is rapidly evolving! From AI and machine learning to blockchain and quantum computing, there\'s always something new to learn about.';
+                    }
+                } else if (this.containsAny(message, this.responses.education)) {
+                    if (message.includes('online')) {
+                        response = 'Online learning platforms like Coursera, edX, and Udemy offer thousands of courses on various subjects. They\'re great for flexible, self-paced learning!';
+                    } else {
+                        response = 'Education is crucial for personal and professional development. What specific aspect would you like to know more about?';
+                    }
+                } else if (this.containsAny(message, this.responses.health)) {
+                    if (message.includes('exercise')) {
+                        response = 'Regular exercise is important for both physical and mental health. It\'s recommended to get at least 150 minutes of moderate activity per week.';
+                    } else {
+                        response = 'Health is wealth! A balanced diet, regular exercise, adequate sleep, and stress management are key to maintaining good health.';
+                    }
+                } else if (this.containsAny(message, this.responses.career)) {
+                    response = 'Career development involves continuous learning, networking, and gaining experience. What specific career advice are you looking for?';
+                } else if (this.containsAny(message, this.responses.color)) {
+                    response = 'As an AI, I appreciate all colors! Each color has its own psychological impact and cultural significance.';
+                } else if (this.containsAny(message, this.responses.food)) {
+                    response = 'While I don\'t eat, I know about various cuisines and nutrition! What would you like to know about food?';
+                } else if (this.containsAny(message, this.responses.music)) {
+                    response = 'Music is a universal language! There are countless genres and styles, each with its own unique characteristics and cultural significance.';
+                } else if (this.containsAny(message, this.responses.movies)) {
+                    response = 'Movies are a powerful medium for storytelling! They combine visual arts, music, and narrative to create engaging experiences.';
+                } else if (this.containsAny(message, this.responses.sports)) {
+                    response = 'Sports promote physical fitness, teamwork, and mental discipline. Which sport interests you the most?';
+                } else if (this.containsAny(message, this.responses.farewell)) {
+                    response = this.getRandomResponse([
+                        'Goodbye! Feel free to return if you have more questions!',
+                        'Take care! I\'ll be here when you need assistance again!',
+                        'Bye! Have a wonderful day!'
+                    ]);
+                } else if (this.containsAny(message, this.responses.thanks)) {
+                    response = this.getRandomResponse([
+                        'You\'re welcome! I\'m glad I could help!',
+                        'It\'s my pleasure to assist you!',
+                        'Anytime! Don\'t hesitate to ask if you need more help!'
+                    ]);
+                } else if (this.containsAny(message, this.responses.help)) {
+                    response = 'I can help you with many topics including:\n- General knowledge\n- Technology\n- Education\n- Health\n- Career advice\n- Math calculations\n- And much more!\nJust ask your question, and I\'ll do my best to help!';
+                } else {
+                    // Advanced pattern matching for questions
+                    if (message.startsWith('what is') || message.startsWith('what are')) {
+                        response = 'That\'s an interesting question! Could you provide more context or specify what aspect you\'d like to know about?';
+                    } else if (message.startsWith('how to')) {
+                        response = 'I\'d be happy to help with that! Could you be more specific about what you\'re trying to achieve?';
+                    } else if (message.startsWith('why')) {
+                        response = 'That\'s a thought-provoking question! Could you elaborate on what you\'re curious about?';
+                    } else {
+                        response = this.getRandomResponse([
+                            'I\'m not quite sure about that. Could you rephrase your question?',
+                            'Interesting topic! Could you provide more details?',
+                            'I want to help! Could you be more specific?'
+                        ]);
+                    }
+                }
+
+                this.hideTypingIndicator();
+                this.addMessage(response, 'bot');
+            }
+
+            containsAny(message, keywords) {
+                return keywords.some(keyword => message.includes(keyword));
+            }
+
+            getRandomResponse(responses) {
+                return responses[Math.floor(Math.random() * responses.length)];
+            }
+        }
+
+        // Initialize the chatbot when the page loads
+        window.addEventListener('DOMContentLoaded', () => {
+            new Chatbot();
+        });
+    </script>
+</body>
+</html>

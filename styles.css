@@ -1,0 +1,515 @@
+
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #ffffff; /* White for text */
+    background: linear-gradient(135deg, #3a4b61, #5d7497); /* Metallic blue gradient */
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #374a64, #6e89aa); /* Dark metallic blue */
+    padding: 1em 0;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header .logo {
+    font-size: 1.8em;
+    color: #d4e3fa; /* Soft metallic blue */
+    text-decoration: none;
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline;
+    margin-right: 1.2em;
+}
+
+header nav ul li a {
+    color: #d4e3fa; /* Soft metallic blue */
+    text-decoration: none;
+}
+
+.btn {
+    background: linear-gradient(135deg, #6e89aa, #9bbad8); /* Blue metallic */
+    color: #ffffff;
+    padding: 0.7em 1.5em;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(135deg, #4c6b8b, #6e89aa); /* Soft blue gradient */
+    padding: 5em 0;
+    text-align: center;
+    color: #ffffff;
+}
+
+.hero h1 {
+    font-size: 2.8em;
+    margin-bottom: 0.5em;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 1em;
+}
+
+/* Features Section */
+.features-overview, .advanced-features {
+    padding: 2em 0;
+    background: linear-gradient(135deg, #3a4b61, #5d7497); /* Dark metallic blue */
+    color: #ffffff;
+    text-align: center;
+}
+
+.features-overview h2, .advanced-features h2 {
+    font-size: 2.2em;
+    color: #d4e3fa; /* Metallic blue highlight */
+    margin-bottom: 1.5em;
+}
+
+.feature {
+    padding: 1.5em 0;
+    background: rgba(255, 255, 255, 0.1); /* Transparent white */
+    margin: 1em auto;
+    border-radius: 12px;
+    box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+.feature h3 {
+    font-size: 1.5em;
+    color: #9bbad8; /* Muted metallic blue */
+}
+
+.feature p {
+    font-size: 1em;
+    color: #d4e3fa; /* Lighter metallic blue */
+}
+
+/* Testimonials Section */
+.testimonials {
+    background: linear-gradient(135deg, #5d7497, #6e89aa); /* Mid metallic blue */
+    padding: 3em 0;
+    color: #ffffff;
+    text-align: center;
+}
+
+.testimonial {
+    margin: 1em 0;
+    font-style: italic;
+}
+
+/* Call to Action */
+.cta {
+    background: linear-gradient(135deg, #4c6b8b, #6e89aa); /* Gradient blue */
+    color: #ffffff;
+    text-align: center;
+    padding: 3em 0;
+}
+
+.cta h2 {
+    margin: 0 0 1em 0;
+    font-size: 2em;
+}
+
+/* Footer */
+footer {
+    background: #3a4b61; /* Deep metallic blue */
+    padding: 1.5em 0;
+    color: #d4e3fa; /* Soft blue */
+    text-align: center;
+}
+
+footer nav ul li a {
+    color: #d4e3fa;
+    text-decoration: none;
+}
+
+footer nav ul li {
+    display: inline;
+    margin-right: 1em;
+}
+
+/* Specific Feature Section Styles */
+
+/* Goal Tracker */
+.goal-tracker, .habit-tracker, .learning-resources {
+    padding: 2em 0;
+    background: linear-gradient(135deg, #4c6b8b, #6e89aa); /* Gradient blue */
+    color: #ffffff;
+}
+
+.goal-suggestions, .smart-goal-form {
+    margin-bottom: 2em;
+}
+
+
+
+
+/* Goal Progress Chart */
+.progress-visualization {
+    text-align: center;
+    margin-top: 2em;
+}
+
+#progressChart {
+    max-width: 400px;  /* Set a smaller width */
+    height: 300px;     /* Set a smaller height */
+    margin: 0 auto;
+}
+#progressChart {
+    width: 100%;       /* Make it responsive */
+    max-width: 500px;  /* Limit maximum width */
+    height: 250px;     /* Set the height to a fixed value */
+    margin: 0 auto;
+}
+
+
+
+
+
+
+h2 {
+    font-size: 1.8em;
+    color: #d4e3fa; /* Metallic highlight */
+    margin-bottom: 1em;
+}
+
+select, input[type="text"], input[type="date"], button {
+    margin: 0.5em 0;
+    padding: 0.7em;
+    border: 1px solid #9bbad8; /* Metallic blue */
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.1); /* Transparent white */
+    color: #ffffff;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    margin-top: 1em;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 0.7em;
+    text-align: left;
+    border-bottom: 1px solid #6e89aa; /* Metallic blue border */
+}
+
+th {
+    background: #3a4b61; /* Deep metallic blue */
+}
+
+tr:nth-child(even) {
+    background: rgba(255, 255, 255, 0.05); /* Subtle row highlight */
+}
+
+/* Resource Section */
+.resource {
+    background: rgba(255, 255, 255, 0.1); /* Transparent metallic */
+    border: 1px solid #9bbad8;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+    padding: 1.5em;
+}
+
+.resource ul li a:hover {
+    color: #d4e3fa; /* Highlight effect */
+}
+
+
+
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #4a4a4a; /* Dark gray for text */
+    background-color: #f5f5f5; /* Light beige background */
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header */
+header {
+    background: #3a4b61; /* Light purple-gray */
+    padding: 1em 0;
+}
+
+header .logo {
+    font-size: 1.5em;
+    color: white; /* Soft purple */
+    text-decoration: none;
+}
+
+/* Chatbot Section */
+.ai-chatbot {
+    text-align: center;
+    padding: 2em 0;
+    background: #faf8f5; /* Light beige */
+}
+
+.ai-chatbot h1 {
+    font-size: 2em;
+    color: #6a4c93; /* Soft purple */
+}
+
+.ai-chatbot p {
+    color: #b3a7c2; /* Muted purple-gray */
+    font-size: 1.2em;
+}
+
+/* Chat Container */
+.chat-container {
+    max-width: 800px;
+    margin: 2em auto;
+    background: #ffffff; /* White */
+    border: 1px solid #dcd6e1; /* Light purple-gray */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1em;
+}
+
+#chat-window {
+    height: 400px;
+    overflow-y: auto;
+    margin-bottom: 1em;
+    background: #f9f9f9; /* Light beige */
+    padding: 1em;
+    border: 1px solid #e4e4e4;
+    border-radius: 8px;
+}
+
+.message {
+    margin: 0.5em 0;
+    padding: 0.7em;
+    border-radius: 5px;
+    max-width: 75%;
+}
+
+.user-message {
+    background: #9b7fa6; /* Muted lavender */
+    color: #ffffff;
+    margin-left: auto;
+    text-align: right;
+}
+
+.bot-message {
+    background: #dcd6e1; /* Light purple-gray */
+    color: #4a4a4a; /* Dark gray */
+    text-align: left;
+}
+
+#chat-input {
+    width: calc(100% - 70px);
+    padding: 0.5em;
+    border: 1px solid #dcd6e1;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+button {
+    padding: 0.5em 1em;
+    background: #9b7fa6; /* Muted lavender */
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-left: 10px;
+}
+
+button:hover {
+    background: #7e5b7d; /* Darker lavender */
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .chat-container {
+        padding: 0.5em;
+    }
+
+    #chat-window {
+        height: 300px;
+    }
+
+    #chat-input {
+        width: calc(100% - 50px);
+    }
+
+    button {
+        margin-left: 5px;
+        font-size: 0.9em;
+    }
+}
+
+/* Personal Journal Page Styling */
+
+.personal-journal {
+    background: linear-gradient(135deg, #4c6b8b, #6e89aa); /* Gradient blue */
+    color: #ffffff;
+    padding: 2em 0;
+}
+
+.personal-journal h1 {
+    font-size: 2em;
+    color: whitesmoke; /* Metallic blue highlight */
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+.personal-journal p {
+    font-size: 1.2em;
+    text-align: center;
+    margin-bottom: 2em;
+    color: #d4e3fa; /* Lighter metallic blue */
+}
+
+form#journal-form {
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+textarea#journal-entry {
+    width: 90%;
+    max-width: 800px;
+    height: 150px;
+    border: 1px solid #9bbad8; /* Metallic blue */
+    border-radius: 8px;
+    padding: 1em;
+    background: #849bb8; /* Transparent white */
+    color: #ffffff;
+    font-size: 1em;
+    font-family: Arial, sans-serif;
+    margin-bottom: 1em;
+}
+
+.entries-container {
+    background: rgba(99, 137, 172, 0.1); /* Transparent metallic */
+    padding: 1.5em;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.entries-container .entry {
+    background: rgba(193, 201, 207, 0.2); /* Subtle white highlight */
+    padding: 1em;
+    margin: 1em 0;
+    border-radius: 8px;
+    color: #ffffff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 1.1em;
+}
+
+.entries-container .entry strong {
+    color: #e7ebf0; /* Highlight for entry title */
+}
+
+.entries-container .btn-danger {
+    background: linear-gradient(135deg, #4a6b8b, #275167); /* Red gradient */
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5em 1em;
+    margin-top: 0.5em;
+    cursor: pointer;
+}
+
+.entries-container .btn-danger:hover {
+    background: linear-gradient(135deg, #2b84c8, #337c95); /* Darker red */
+}
+
+.btn {
+    background: linear-gradient(135deg, #6e89aa, #9bbad8); /* Blue metallic */
+    color: #ffffff;
+    padding: 0.7em 1.5em;
+    border-radius: 8px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: linear-gradient(135deg, #4c6b8b, #7e8ca5); /* Darker metallic blue */
+}
+
+
+/* Progress Dashboard Page Styling */
+
+.progress-dashboard {
+    background: #3a4b61;
+    color: #ffffff;
+    padding: 2em 0;
+}
+
+.progress-dashboard h1 {
+    font-size: 2.5em;
+    color: #e1eee8; /* Soft mint green */
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+.progress-dashboard p {
+    font-size: 1.2em;
+    text-align: center;
+    color: #e4edef; /* Light green */
+    margin-bottom: 2em;
+}
+
+.stats-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1.5em;
+}
+
+.stat {
+    background: rgba(155, 188, 195, 0.2); /* Transparent white */
+    padding: 1.5em;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: calc(33% - 1em);
+    min-width: 250px;
+}
+
+.stat h2 {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+    color: #bcc9d2; /* Light pastel green */
+}
+
+.stat-number {
+    font-size: 3em;
+    font-weight: bold;
+    color: #ffffff; /* Bright white */
+    margin-top: 0.2em;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .stat {
+        width: 100%; /* Full width on smaller screens */
+    }
+}
